@@ -1,0 +1,12 @@
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.vbproj.AssemblyReference.cache
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.Dashboard.resources
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.Resources.resources
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.vbproj.GenerateResource.cache
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.vbproj.CoreCompileInputs.cache
+C:\Users\alexi\source\repos\SGIBOS\bin\Debug\SGIBOS.exe.config
+C:\Users\alexi\source\repos\SGIBOS\bin\Debug\SGIBOS.exe
+C:\Users\alexi\source\repos\SGIBOS\bin\Debug\SGIBOS.pdb
+C:\Users\alexi\source\repos\SGIBOS\bin\Debug\SGIBOS.xml
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.exe
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.xml
+C:\Users\alexi\source\repos\SGIBOS\obj\Debug\SGIBOS.pdb
