@@ -73,11 +73,29 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes.Designer.vb">
+      <DependentUpon>Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dashboard.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.vb">
       <DependentUpon>Dashboard.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario.Designer.vb">
+      <DependentUpon>Inventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualUsuario.Designer.vb">
+      <DependentUpon>ManualUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManualUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -95,16 +113,52 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Proveedores.Designer.vb">
+      <DependentUpon>Proveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes.Designer.vb">
+      <DependentUpon>Reportes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas.Designer.vb">
+      <DependentUpon>Ventas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Clientes.resx">
+      <DependentUpon>Clientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario.resx">
+      <DependentUpon>Inventario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualUsuario.resx">
+      <DependentUpon>ManualUsuario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proveedores.resx">
+      <DependentUpon>Proveedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes.resx">
+      <DependentUpon>Reportes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas.resx">
+      <DependentUpon>Ventas.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
