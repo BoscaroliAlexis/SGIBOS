@@ -3,4 +3,9 @@
         Reportes.StartPosition = FormStartPosition.CenterScreen
         Reportes.Show()
     End Sub
+
+    Private Sub btnAñadirInv_Click(sender As Object, e As EventArgs) Handles btnAñadirInv.Click
+        NuevoProducto.StartPosition = FormStartPosition.CenterScreen
+        NuevoProducto.Show()
+    End Sub
 End Class

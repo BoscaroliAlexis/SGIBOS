@@ -1,7 +1,9 @@
 ﻿Public Class Dashboard
 
     Private Sub Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.StartPosition = FormStartPosition.CenterScreen
+        Me.StartPosition = FormStartPosition.Manual
+        Me.Location = New Point((Screen.PrimaryScreen.WorkingArea.Width - Me.Width) \ 2,
+                            (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) \ 2)
     End Sub
 
     Private Sub btnClientes_Click(sender As Object, e As EventArgs) Handles btnClientes.Click

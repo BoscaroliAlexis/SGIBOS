@@ -28,3 +28,7 @@ C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.Inventa
 C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.Ventas.resources
 C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.Reportes.resources
 C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.ManualUsuario.resources
+C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.NuevoCliente.resources
+C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.NuevoProducto.resources
+C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.NuevoProveedor.resources
+C:\Users\alexi\OneDrive\Documentos\GitHub\SGIBOS\SGIBOS\obj\Debug\SGIBOS.NuevoVenta.resources
