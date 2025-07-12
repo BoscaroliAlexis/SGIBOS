@@ -1,9 +1,8 @@
 
--- Crear base de datos y usarla
 CREATE DATABASE IF NOT EXISTS TiendaDB; 
 USE TiendaDB;
 
--- Crear tablas base (sin dependencias)
+
 CREATE TABLE Clientes (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -26,7 +25,7 @@ CREATE TABLE Roles (
     permisos VARCHAR(100)
 );
 
--- Tablas auxiliares sin dependencias externas
+
 CREATE TABLE Categorias (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL
@@ -42,7 +41,7 @@ CREATE TABLE Proveedores (
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tablas con claves foráneas a Usuarios y Roles
+
 CREATE TABLE Usuarios_roles (
     id_usuario_rol INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT,
@@ -52,7 +51,7 @@ CREATE TABLE Usuarios_roles (
     FOREIGN KEY (id_rol) REFERENCES Roles(id_rol)
 );
 
--- Productos depende de Categorias y Proveedores
+
 CREATE TABLE Productos (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
@@ -66,7 +65,7 @@ CREATE TABLE Productos (
     FOREIGN KEY (id_proveedor) REFERENCES Proveedores(id_proveedor)
 );
 
--- Ventas depende de Clientes y Usuarios
+
 CREATE TABLE Ventas (
     id_venta INT AUTO_INCREMENT PRIMARY KEY,
     fecha_venta DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -80,7 +79,7 @@ CREATE TABLE Ventas (
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
 );
 
--- Detalle_ventas depende de Ventas y Productos
+
 CREATE TABLE Detalle_ventas (
     id_detalle_ventas INT AUTO_INCREMENT PRIMARY KEY,
     id_venta INT,
@@ -92,11 +91,11 @@ CREATE TABLE Detalle_ventas (
     FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
 );
 
--- Insertar registros especiales para "Sin categoría" y "Sin proveedor"
+
 INSERT INTO Categorias (nombre) VALUES ('Sin categoría');
 INSERT INTO Proveedores (nombre) VALUES ('Sin proveedor');
 
--- Insertar datos en Clientes
+
 INSERT INTO Clientes (nombre, telefono, correo, direccion) VALUES
 ('Juan Perez', '123456789', 'juan@example.com', 'Calle 123'),
 ('Maria Lopez', '987654321', 'maria@example.com', 'Avenida 456'),
@@ -109,24 +108,23 @@ INSERT INTO Clientes (nombre, telefono, correo, direccion) VALUES
 ('Martín Cabrera', '999000111', 'martin@example.com', 'Barrio 7'),
 ('Sofía Romero', '222333444', 'sofia@example.com', 'Calle 8');
 
--- Insertar datos en Usuarios
 INSERT INTO Usuarios (nombre, contrasena) VALUES
 ('admin', 'admin123');
 
 
--- Insertar datos en Roles
+
 INSERT INTO Roles (titulo, descripcion, permisos) VALUES
 ('Administrador', 'Acceso total', 'ALL'),
 ('Vendedor', 'Acceso limitado', 'LIMITED'),
 ('Reportes', 'Solo generar reportes', 'REPORTS_ONLY'),
 ('Manager', 'Puede hacer ABM de Clientes, Ventas, Proveedores e inventario', 'ABM_CLIENTES_VENTAS_PROVEEDORES_PRODUCTOS');
 
--- Insertar datos en Usuarios_roles (respetando los IDs insertados)
+
 INSERT INTO Usuarios_roles (id_usuario, id_rol) VALUES
 (1, 1); -- admin -> Administrador
 
 
--- Insertar datos en Categorias (aparte del 'Sin categoría')
+
 INSERT INTO Categorias (nombre) VALUES
 ('Electrónica'),
 ('Ropa'),
@@ -138,7 +136,7 @@ INSERT INTO Categorias (nombre) VALUES
 ('Oficina'),
 ('Mascotas');
 
--- Insertar datos en Proveedores (aparte del 'Sin proveedor')
+
 INSERT INTO Proveedores (nombre, contacto, telefono, correo, direccion) VALUES
 ('Proveedor 1', 'Carlos', '555111222', 'proveedor1@example.com', 'Calle 789'),
 ('Proveedor 2', 'Ana', '555333444', 'proveedor2@example.com', 'Avenida 101'),
@@ -150,7 +148,7 @@ INSERT INTO Proveedores (nombre, contacto, telefono, correo, direccion) VALUES
 ('Proveedor 8', 'Laura', '555222111', 'proveedor8@example.com', 'Pje. Estrella 222'),
 ('Proveedor 9', 'Martín', '555999000', 'proveedor9@example.com', 'Calle Azul 789');
 
--- Insertar datos en Productos
+
 INSERT INTO Productos (nombre, descripcion, precio, cantidad_stock, id_categoria, id_proveedor) VALUES
 ('Laptop', 'Laptop de alta gama', 1200.99, 10, 2, 2),
 ('Camisa', 'Camisa de algodón', 25.50, 50, 3, 3),

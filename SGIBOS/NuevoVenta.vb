@@ -434,7 +434,6 @@ Public Class NuevoVenta
     End Sub
 
     Private Sub NuevoVenta_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-        ' Si el formulario propietario es del tipo Inventario, llama a su método para recargar datos
         If Me.Owner IsNot Nothing AndAlso TypeOf Me.Owner Is Ventas Then
             CType(Me.Owner, Ventas).CargarVentas()
         End If
