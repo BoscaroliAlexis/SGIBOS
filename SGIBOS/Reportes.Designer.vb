@@ -23,38 +23,18 @@ Partial Class Reportes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.cmbTipo = New System.Windows.Forms.ComboBox()
-        Me.cmbOrden = New System.Windows.Forms.ComboBox()
-        Me.cmbPeriodo = New System.Windows.Forms.ComboBox()
         Me.btnExportarPDF = New System.Windows.Forms.Button()
         Me.btnExportarCSV = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'cmbTipo
         '
         Me.cmbTipo.FormattingEnabled = True
-        Me.cmbTipo.Location = New System.Drawing.Point(78, 179)
+        Me.cmbTipo.Location = New System.Drawing.Point(225, 183)
         Me.cmbTipo.Name = "cmbTipo"
-        Me.cmbTipo.Size = New System.Drawing.Size(181, 28)
+        Me.cmbTipo.Size = New System.Drawing.Size(336, 28)
         Me.cmbTipo.TabIndex = 0
-        '
-        'cmbOrden
-        '
-        Me.cmbOrden.FormattingEnabled = True
-        Me.cmbOrden.Location = New System.Drawing.Point(302, 179)
-        Me.cmbOrden.Name = "cmbOrden"
-        Me.cmbOrden.Size = New System.Drawing.Size(181, 28)
-        Me.cmbOrden.TabIndex = 1
-        '
-        'cmbPeriodo
-        '
-        Me.cmbPeriodo.FormattingEnabled = True
-        Me.cmbPeriodo.Location = New System.Drawing.Point(531, 179)
-        Me.cmbPeriodo.Name = "cmbPeriodo"
-        Me.cmbPeriodo.Size = New System.Drawing.Size(181, 28)
-        Me.cmbPeriodo.TabIndex = 2
         '
         'btnExportarPDF
         '
@@ -77,42 +57,20 @@ Partial Class Reportes
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(103, 123)
+        Me.Label1.Location = New System.Drawing.Point(334, 131)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(120, 20)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Tipo de reporte:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(370, 123)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 20)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "Orden:"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(586, 123)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 20)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Periodo:"
         '
         'Reportes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnExportarCSV)
         Me.Controls.Add(Me.btnExportarPDF)
-        Me.Controls.Add(Me.cmbPeriodo)
-        Me.Controls.Add(Me.cmbOrden)
         Me.Controls.Add(Me.cmbTipo)
         Me.Name = "Reportes"
         Me.Text = "Reportes"
@@ -122,11 +80,7 @@ Partial Class Reportes
     End Sub
 
     Friend WithEvents cmbTipo As ComboBox
-    Friend WithEvents cmbOrden As ComboBox
-    Friend WithEvents cmbPeriodo As ComboBox
     Friend WithEvents btnExportarPDF As Button
     Friend WithEvents btnExportarCSV As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
 End Class

@@ -27,13 +27,11 @@ Partial Class NuevoProveedor
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtCorreo = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.txtContacto = New System.Windows.Forms.TextBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
-        Me.cmbActivo = New System.Windows.Forms.ComboBox()
         Me.btnAñadirProv = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -82,15 +80,6 @@ Partial Class NuevoProveedor
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Direccion:"
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(40, 335)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(56, 20)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Activo:"
-        '
         'txtNombre
         '
         Me.txtNombre.Location = New System.Drawing.Point(198, 59)
@@ -126,17 +115,9 @@ Partial Class NuevoProveedor
         Me.txtDireccion.Size = New System.Drawing.Size(226, 26)
         Me.txtDireccion.TabIndex = 10
         '
-        'cmbActivo
-        '
-        Me.cmbActivo.FormattingEnabled = True
-        Me.cmbActivo.Location = New System.Drawing.Point(198, 327)
-        Me.cmbActivo.Name = "cmbActivo"
-        Me.cmbActivo.Size = New System.Drawing.Size(226, 28)
-        Me.cmbActivo.TabIndex = 11
-        '
         'btnAñadirProv
         '
-        Me.btnAñadirProv.Location = New System.Drawing.Point(153, 402)
+        Me.btnAñadirProv.Location = New System.Drawing.Point(154, 344)
         Me.btnAñadirProv.Name = "btnAñadirProv"
         Me.btnAñadirProv.Size = New System.Drawing.Size(163, 47)
         Me.btnAñadirProv.TabIndex = 12
@@ -147,15 +128,13 @@ Partial Class NuevoProveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(483, 478)
+        Me.ClientSize = New System.Drawing.Size(483, 422)
         Me.Controls.Add(Me.btnAñadirProv)
-        Me.Controls.Add(Me.cmbActivo)
         Me.Controls.Add(Me.txtDireccion)
         Me.Controls.Add(Me.txtContacto)
         Me.Controls.Add(Me.txtTelefono)
         Me.Controls.Add(Me.txtCorreo)
         Me.Controls.Add(Me.txtNombre)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -173,12 +152,10 @@ Partial Class NuevoProveedor
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents txtCorreo As TextBox
     Friend WithEvents txtTelefono As TextBox
     Friend WithEvents txtContacto As TextBox
     Friend WithEvents txtDireccion As TextBox
-    Friend WithEvents cmbActivo As ComboBox
     Friend WithEvents btnAñadirProv As Button
 End Class

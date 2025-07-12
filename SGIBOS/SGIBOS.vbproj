@@ -47,17 +47,78 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.26.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.26.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.2.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.9.2.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="ZstdSharp, Version=0.8.0.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>packages\ZstdSharp.Port.0.8.0\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -73,10 +134,35 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarVenta.Designer.vb">
+      <DependentUpon>ActualizarVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarMetodoPago.Designer.vb">
+      <DependentUpon>AgregarMetodoPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarMetodoPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categorias.Designer.vb">
+      <DependentUpon>Categorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Categorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>
     </Compile>
     <Compile Include="Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conexion.vb" />
+    <Compile Include="Configuracion.Designer.vb">
+      <DependentUpon>Configuracion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.vb">
@@ -84,6 +170,36 @@
     </Compile>
     <Compile Include="Dashboard.Designer.vb">
       <DependentUpon>Dashboard.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardManager.Designer.vb">
+      <DependentUpon>DashboardManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardReporte.Designer.vb">
+      <DependentUpon>DashboardReporte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardReporte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardVendedor.Designer.vb">
+      <DependentUpon>DashboardVendedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardVendedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetallesVenta.Designer.vb">
+      <DependentUpon>DetallesVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioSesion.Designer.vb">
+      <DependentUpon>InicioSesion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InicioSesion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventario.Designer.vb">
@@ -98,11 +214,10 @@
     <Compile Include="ManualUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ModuloConsultas.vb" />
+    <Compile Include="ModuloSeguridad.vb" />
+    <Compile Include="ModuloVisual.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Application.myapp</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +227,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MyApplication.vb" />
+    <Compile Include="MySql\Data.vb" />
+    <Compile Include="NuevaCategoria.Designer.vb">
+      <DependentUpon>NuevaCategoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NuevaCategoria.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="NuevoCliente.Designer.vb">
       <DependentUpon>NuevoCliente.vb</DependentUpon>
@@ -137,16 +260,30 @@
     <Compile Include="NuevoVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Program.vb" />
     <Compile Include="Proveedores.Designer.vb">
       <DependentUpon>Proveedores.vb</DependentUpon>
     </Compile>
     <Compile Include="Proveedores.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Registracion.Designer.vb">
+      <DependentUpon>Registracion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Registracion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes.Designer.vb">
       <DependentUpon>Reportes.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sesion.vb" />
+    <Compile Include="Usuarios.Designer.vb">
+      <DependentUpon>Usuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventas.Designer.vb">
@@ -157,11 +294,38 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ActualizarVenta.resx">
+      <DependentUpon>ActualizarVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarMetodoPago.resx">
+      <DependentUpon>AgregarMetodoPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Categorias.resx">
+      <DependentUpon>Categorias.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Configuracion.resx">
+      <DependentUpon>Configuracion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardManager.resx">
+      <DependentUpon>DashboardManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardReporte.resx">
+      <DependentUpon>DashboardReporte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardVendedor.resx">
+      <DependentUpon>DashboardVendedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetallesVenta.resx">
+      <DependentUpon>DetallesVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioSesion.resx">
+      <DependentUpon>InicioSesion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario.resx">
       <DependentUpon>Inventario.vb</DependentUpon>
@@ -174,6 +338,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevaCategoria.resx">
+      <DependentUpon>NuevaCategoria.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevoCliente.resx">
       <DependentUpon>NuevoCliente.vb</DependentUpon>
@@ -190,17 +357,23 @@
     <EmbeddedResource Include="Proveedores.resx">
       <DependentUpon>Proveedores.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registracion.resx">
+      <DependentUpon>Registracion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes.resx">
       <DependentUpon>Reportes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios.resx">
+      <DependentUpon>Usuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas.resx">
       <DependentUpon>Ventas.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +381,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="line-icon-for-local-business-vector.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

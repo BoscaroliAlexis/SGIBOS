@@ -22,12 +22,17 @@ Partial Class Proveedores
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.txtBuscarProveedores = New System.Windows.Forms.TextBox()
         Me.btnBuscarProveedores = New System.Windows.Forms.Button()
         Me.btnAñadirPro = New System.Windows.Forms.Button()
         Me.dgvProveedores = New System.Windows.Forms.DataGridView()
         Me.btnGenerarReportePro = New System.Windows.Forms.Button()
+        Me.cmsActEli4 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ActualizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cmsActEli4.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtBuscarProveedores
@@ -75,6 +80,25 @@ Partial Class Proveedores
         Me.btnGenerarReportePro.Text = "Generar reporte"
         Me.btnGenerarReportePro.UseVisualStyleBackColor = True
         '
+        'cmsActEli4
+        '
+        Me.cmsActEli4.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.cmsActEli4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActualizarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.cmsActEli4.Name = "cmsActEli4"
+        Me.cmsActEli4.Size = New System.Drawing.Size(241, 101)
+        '
+        'ActualizarToolStripMenuItem
+        '
+        Me.ActualizarToolStripMenuItem.Name = "ActualizarToolStripMenuItem"
+        Me.ActualizarToolStripMenuItem.Size = New System.Drawing.Size(240, 32)
+        Me.ActualizarToolStripMenuItem.Text = "Actualizar"
+        '
+        'EliminarToolStripMenuItem
+        '
+        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(240, 32)
+        Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        '
         'Proveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -88,6 +112,7 @@ Partial Class Proveedores
         Me.Name = "Proveedores"
         Me.Text = "Proveedores"
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cmsActEli4.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -98,4 +123,7 @@ Partial Class Proveedores
     Friend WithEvents btnAñadirPro As Button
     Friend WithEvents dgvProveedores As DataGridView
     Friend WithEvents btnGenerarReportePro As Button
+    Friend WithEvents cmsActEli4 As ContextMenuStrip
+    Friend WithEvents ActualizarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
 End Class

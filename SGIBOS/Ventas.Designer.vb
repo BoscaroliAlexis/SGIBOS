@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Ventas
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Ventas
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.txtBuscarVentas = New System.Windows.Forms.TextBox()
         Me.btnBuscarVentas = New System.Windows.Forms.Button()
@@ -32,10 +32,10 @@ Partial Class Ventas
         '
         'txtBuscarVentas
         '
-        Me.txtBuscarVentas.Location = New System.Drawing.Point(37, 37)
+        Me.txtBuscarVentas.Location = New System.Drawing.Point(38, 37)
         Me.txtBuscarVentas.Multiline = True
         Me.txtBuscarVentas.Name = "txtBuscarVentas"
-        Me.txtBuscarVentas.Size = New System.Drawing.Size(506, 48)
+        Me.txtBuscarVentas.Size = New System.Drawing.Size(506, 49)
         Me.txtBuscarVentas.TabIndex = 3
         '
         'btnBuscarVentas
@@ -59,16 +59,16 @@ Partial Class Ventas
         'dgvVentas
         '
         Me.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvVentas.Location = New System.Drawing.Point(28, 113)
+        Me.dgvVentas.Location = New System.Drawing.Point(28, 112)
         Me.dgvVentas.Name = "dgvVentas"
         Me.dgvVentas.RowHeadersWidth = 62
         Me.dgvVentas.RowTemplate.Height = 28
-        Me.dgvVentas.Size = New System.Drawing.Size(734, 296)
+        Me.dgvVentas.Size = New System.Drawing.Size(734, 295)
         Me.dgvVentas.TabIndex = 6
         '
         'btnGenerarReporteVen
         '
-        Me.btnGenerarReporteVen.Location = New System.Drawing.Point(285, 427)
+        Me.btnGenerarReporteVen.Location = New System.Drawing.Point(285, 428)
         Me.btnGenerarReporteVen.Name = "btnGenerarReporteVen"
         Me.btnGenerarReporteVen.Size = New System.Drawing.Size(207, 46)
         Me.btnGenerarReporteVen.TabIndex = 7
