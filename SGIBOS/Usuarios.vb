@@ -15,12 +15,11 @@ Public Class Usuarios
 
     Private Sub CargarUsuarios()
         Try
-            Dim consulta As String = "SELECT u.id_usuario, u.nombre, u.contrasena, r.titulo AS rol " &
+            Dim consulta As String = "SELECT u.id_usuario, u.nombre, u.contrasena, r.titulo AS rol, u.estado " &
                          "FROM Usuarios u " &
                          "JOIN Usuarios_roles ur ON u.id_usuario = ur.id_usuario " &
                          "JOIN Roles r ON ur.id_rol = r.id_rol " &
                          "WHERE u.id_usuario <> 1"
-
 
             Dim adaptador As New MySqlDataAdapter(consulta, conn)
             Dim tabla As New DataTable()
@@ -28,10 +27,9 @@ Public Class Usuarios
 
             dgvUsuarios.DataSource = tabla
             dgvUsuarios.AllowUserToAddRows = False
-
             dgvUsuarios.Columns("contrasena").Visible = False
 
-
+            ' Agregar columna de botones si no existe
             If dgvUsuarios.Columns("Acciones") Is Nothing Then
                 Dim colBotones As New DataGridViewButtonColumn()
                 colBotones.Name = "Acciones"
@@ -41,8 +39,8 @@ Public Class Usuarios
             End If
 
             dgvUsuarios.RowTemplate.Height = 48
-            dgvUsuarios.Columns("Acciones").MinimumWidth = 180
-            dgvUsuarios.Columns("Acciones").Width = 200
+            dgvUsuarios.Columns("Acciones").MinimumWidth = 260
+            dgvUsuarios.Columns("Acciones").Width = 260
             dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
 
         Catch ex As Exception
@@ -54,25 +52,35 @@ Public Class Usuarios
         If e.RowIndex >= 0 AndAlso dgvUsuarios.Columns(e.ColumnIndex).Name = "Acciones" Then
             Dim fila = dgvUsuarios.Rows(e.RowIndex)
             Dim id_usuario As Integer = Convert.ToInt32(fila.Cells("id_usuario").Value)
+            Dim estado As Integer = Convert.ToInt32(fila.Cells("estado").Value)
 
             Dim mouseX = dgvUsuarios.PointToClient(Cursor.Position).X - dgvUsuarios.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, False).X
             Dim anchoCelda = dgvUsuarios.Columns("Acciones").Width
 
-            If mouseX < anchoCelda / 3 Then
+            ' Dividir la celda en 4 secciones iguales
+            If mouseX < anchoCelda / 4 Then
+                ' Editar
                 Dim nombre = fila.Cells("nombre").Value.ToString()
                 Dim contrasena = fila.Cells("contrasena").Value.ToString()
                 Dim rol = fila.Cells("rol").Value.ToString()
                 EditarUsuario(id_usuario, nombre, contrasena, rol)
 
-            ElseIf mouseX < 2 * anchoCelda / 3 Then
+            ElseIf mouseX < 2 * anchoCelda / 4 Then
+                ' Eliminar
                 Dim confirmacion = MessageBox.Show("¿Desea eliminar este usuario?", "Confirmación", MessageBoxButtons.YesNo)
                 If confirmacion = DialogResult.Yes Then
                     EliminarUsuario(id_usuario)
                     CargarUsuarios()
                 End If
 
-            Else
+            ElseIf mouseX < 3 * anchoCelda / 4 Then
+                ' Resetear contraseña
                 ReiniciarContraseña(id_usuario)
+
+            Else
+                ' Habilitar / Deshabilitar
+                CambiarEstadoUsuario(id_usuario, estado)
+                CargarUsuarios()
             End If
         End If
     End Sub
@@ -83,17 +91,21 @@ Public Class Usuarios
             e.Graphics.FillRectangle(New SolidBrush(Color.White), e.CellBounds)
 
             Dim ancho = e.CellBounds.Width
-            Dim alto = e.CellBounds.Height
             Dim fuente = e.CellStyle.Font
+            Dim padding As Integer = 8
+            Dim fila = dgvUsuarios.Rows(e.RowIndex)
+            Dim estado As Integer = Convert.ToInt32(fila.Cells("estado").Value)
+            Dim textoEstado As String = If(estado = 1, "Deshabilitar", "Habilitar")
 
-            e.Graphics.DrawString("Editar", fuente, Brushes.Black, e.CellBounds.X + 10, e.CellBounds.Y + 5)
-            e.Graphics.DrawString("Eliminar", fuente, Brushes.Black, e.CellBounds.X + ancho / 3 + 10, e.CellBounds.Y + 5)
-            e.Graphics.DrawString("Reset", fuente, Brushes.Black, e.CellBounds.X + 2 * ancho / 3 + 10, e.CellBounds.Y + 5)
+            Dim cuarto = ancho / 4
+            e.Graphics.DrawString("Editar", fuente, Brushes.Black, e.CellBounds.X + padding, e.CellBounds.Y + 5)
+            e.Graphics.DrawString("Eliminar", fuente, Brushes.Black, e.CellBounds.X + cuarto + padding, e.CellBounds.Y + 5)
+            e.Graphics.DrawString("Reset", fuente, Brushes.Black, e.CellBounds.X + 2 * cuarto + padding, e.CellBounds.Y + 5)
+            e.Graphics.DrawString(textoEstado, fuente, Brushes.Black, e.CellBounds.X + 3 * cuarto + padding, e.CellBounds.Y + 5)
 
             e.Handled = True
         End If
     End Sub
-
 
 
     Private Sub EliminarUsuario(id As Integer)
@@ -115,8 +127,7 @@ Public Class Usuarios
         Dim nuevoNombre = InputBox("Nuevo nombre:", "Editar Usuario", nombreActual)
         If nuevoNombre = "" Then Exit Sub
 
-        ' No permitir editar contraseña
-        Dim nuevaPass = passActual
+        Dim nuevaPass = passActual ' No se permite editar contraseña
 
         Dim nuevoRol = InputBox("Nuevo rol (Administrador, Vendedor, Reportes, Manager):", "Editar Usuario", rolActual)
         If nuevoRol = "" Then Exit Sub
@@ -163,6 +174,22 @@ Public Class Usuarios
             MessageBox.Show("Nueva contraseña generada: " & nuevaPass & vbCrLf & "¡Copiala ahora! No se puede volver a ver.", "Contraseña reiniciada", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show("Error al reiniciar la contraseña: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub CambiarEstadoUsuario(idUsuario As Integer, estadoActual As Integer)
+        Try
+            Dim nuevoEstado As Integer = If(estadoActual = 1, 0, 1)
+            Dim cmd As New MySqlCommand("UPDATE Usuarios SET estado = @estado WHERE id_usuario = @id", conn)
+            cmd.Parameters.AddWithValue("@estado", nuevoEstado)
+            cmd.Parameters.AddWithValue("@id", idUsuario)
+            cmd.ExecuteNonQuery()
+
+            Dim mensaje = If(nuevoEstado = 1, "Usuario habilitado.", "Usuario deshabilitado.")
+            MessageBox.Show(mensaje, "Estado actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cambiar el estado del usuario: " & ex.Message)
         End Try
     End Sub
 

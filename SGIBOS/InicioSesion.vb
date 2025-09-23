@@ -44,7 +44,7 @@ Public Class InicioSesion
 
             ' Intentar iniciar sesión con contraseña hasheada
             Dim cmd As New MySqlCommand("
-            SELECT u.id_usuario, u.nombre, r.titulo AS rol 
+            SELECT u.id_usuario, u.nombre, r.titulo AS rol, u.estado 
             FROM Usuarios u
             JOIN Usuarios_roles ur ON u.id_usuario = ur.id_usuario
             JOIN Roles r ON ur.id_rol = r.id_rol
@@ -57,7 +57,15 @@ Public Class InicioSesion
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
             If reader.Read() Then
-                ' Login exitoso con contraseña hasheada
+                ' Verificar si el usuario está habilitado
+                Dim estado As Integer = reader.GetInt32("estado")
+                If estado = 0 Then
+                    reader.Close()
+                    MessageBox.Show("Este usuario está deshabilitado. Contacte con el administrador.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                    Exit Sub
+                End If
+
+                ' Login exitoso
                 Sesion.IDUsuarioActual = reader.GetInt32("id_usuario")
                 Sesion.NombreUsuarioActual = reader.GetString("nombre")
                 Sesion.RolUsuarioActual = reader.GetString("rol")
@@ -79,38 +87,12 @@ Public Class InicioSesion
                 End Select
             Else
                 reader.Close()
-
-                ' Intentar login con contraseña en texto plano (caso viejo)
-                Dim cmdCheckPlain As New MySqlCommand("SELECT id_usuario FROM Usuarios WHERE nombre=@usuario AND contrasena=@passPlano", conn)
-                cmdCheckPlain.Parameters.AddWithValue("@usuario", txtUsuario.Text)
-                cmdCheckPlain.Parameters.AddWithValue("@passPlano", txtContraseña.Text)
-                Dim readerPlain As MySqlDataReader = cmdCheckPlain.ExecuteReader()
-
-                If readerPlain.Read() Then
-                    ' El usuario tenía contraseña en texto plano → actualizamos a hash
-                    Dim userId As Integer = readerPlain.GetInt32("id_usuario")
-                    readerPlain.Close()
-
-                    Dim nuevoHash As String = ObtenerHashSHA256(txtContraseña.Text)
-                    Dim cmdUpdate As New MySqlCommand("UPDATE Usuarios SET contrasena=@hash WHERE id_usuario=@id", conn)
-                    cmdUpdate.Parameters.AddWithValue("@hash", nuevoHash)
-                    cmdUpdate.Parameters.AddWithValue("@id", userId)
-                    cmdUpdate.ExecuteNonQuery()
-
-                    ' Ahora que la contraseña está hasheada, volvemos a intentar el login
-                    btnIniciarSesion_Click(sender, e) ' Llama nuevamente al mismo botón
-                    Exit Sub
-                End If
-
-                readerPlain.Close()
                 MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MessageBox.Show("Error al iniciar sesión: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
 
     ' Evento que se ejecuta al hacer clic en el botón Cancelar
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -121,7 +103,7 @@ Public Class InicioSesion
     Private Sub lnkRegistrarse_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkRegistrarse.LinkClicked
         Dim frm As New Registracion() ' Crea instancia del formulario de registro
         frm.Show()                    ' Muestra el formulario de registro
-        Me.Hide()                    ' Oculta el formulario de inicio de sesión
+        Me.Hide()                     ' Oculta el formulario de inicio de sesión
     End Sub
 
     ' Método público para limpiar los campos del formulario (usuario, contraseña y checkbox)

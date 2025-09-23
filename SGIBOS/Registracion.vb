@@ -22,9 +22,6 @@ Public Class Registracion
                                 (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) \ 2)
     End Sub
 
-    ' Método para cargar los roles en el ComboBox cmbRol
-
-
     ' Evento que se ejecuta al hacer clic en el botón Registrar
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
         Dim usuario As String = txtNuevoUsuario.Text
@@ -58,8 +55,8 @@ Public Class Registracion
         End If
         reader.Close()
 
-        ' Insertar el nuevo usuario en la tabla Usuarios con la contraseña hasheada
-        Dim cmdInsert As New MySqlCommand("INSERT INTO Usuarios (nombre, contrasena) VALUES (@nombre, @pass)", conn)
+        ' Insertar el nuevo usuario en la tabla Usuarios con estado habilitado (1)
+        Dim cmdInsert As New MySqlCommand("INSERT INTO Usuarios (nombre, contrasena, estado) VALUES (@nombre, @pass, 1)", conn)
         cmdInsert.Parameters.AddWithValue("@nombre", usuario)
         cmdInsert.Parameters.AddWithValue("@pass", hash)
         cmdInsert.ExecuteNonQuery()
@@ -80,8 +77,6 @@ Public Class Registracion
         frm.Show()
         Me.Close()
     End Sub
-
-
 
     ' Evento para cancelar el registro y volver al inicio de sesión
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click

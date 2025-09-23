@@ -15,8 +15,10 @@ CREATE TABLE Clientes (
 CREATE TABLE Usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    contrasena VARCHAR(64) NOT NULL
+    contrasena VARCHAR(64) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT TRUE
 );
+
 
 CREATE TABLE Roles (
     id_rol INT AUTO_INCREMENT PRIMARY KEY,
@@ -108,8 +110,8 @@ INSERT INTO Clientes (nombre, telefono, correo, direccion) VALUES
 ('Martín Cabrera', '999000111', 'martin@example.com', 'Barrio 7'),
 ('Sofía Romero', '222333444', 'sofia@example.com', 'Calle 8');
 
-INSERT INTO Usuarios (nombre, contrasena) VALUES
-('admin', 'admin123');
+INSERT INTO Usuarios (nombre, contrasena, estado) 
+VALUES ('admin', SHA2('admin123', 256), TRUE);
 
 
 

@@ -1,6 +1,13 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
+Imports System.IO
+
 
 Public Class Inventario
+
+    ' Variable global en el formulario
+    Private valorConfigurado As Integer = 5
 
     ' Timer para controlar la búsqueda diferida mientras el usuario escribe
     Dim TimerBuscar As New Timer()
@@ -206,4 +213,64 @@ Public Class Inventario
         frmReportes.ShowDialog()
     End Sub
 
+    Private Sub btnReporteStock_Click(sender As Object, e As EventArgs) Handles btnReporteStock.Click
+        ' Cuadro para elegir dónde guardar el archivo
+        Dim saveDialog As New SaveFileDialog()
+        saveDialog.Filter = "Archivos PDF|*.pdf"
+        saveDialog.Title = "Guardar Reporte de Stock"
+        saveDialog.FileName = "Reporte_Stock.pdf"
+
+        If saveDialog.ShowDialog() = DialogResult.OK Then
+            Try
+                ' 1. Consulta a la BD
+                Dim query As String = "SELECT nombre, cantidad_stock FROM Productos WHERE cantidad_stock <= @valor"
+                Dim cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@valor", valorConfigurado)
+
+                Dim adapter As New MySqlDataAdapter(cmd)
+                Dim dt As New DataTable()
+                adapter.Fill(dt)
+
+                ' 2. Crear el PDF
+                Dim doc As New Document(PageSize.A4, 40, 40, 40, 40)
+                PdfWriter.GetInstance(doc, New FileStream(saveDialog.FileName, FileMode.Create))
+                doc.Open()
+
+                ' Título
+                Dim titulo As New Paragraph("Reporte de Productos con stock menor o igual a " & valorConfigurado, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14))
+                titulo.Alignment = Element.ALIGN_CENTER
+                doc.Add(titulo)
+                doc.Add(New Paragraph(" "))
+
+                ' Tabla
+                Dim table As New PdfPTable(2)
+                table.WidthPercentage = 100
+                table.AddCell("Producto")
+                table.AddCell("Stock")
+
+                For Each row As DataRow In dt.Rows
+                    table.AddCell(row("nombre").ToString())
+                    table.AddCell(row("cantidad_stock").ToString())
+                Next
+
+                doc.Add(table)
+                doc.Close()
+
+                MessageBox.Show("PDF generado correctamente en: " & saveDialog.FileName, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            Catch ex As Exception
+                MessageBox.Show("Error al generar PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnConfigurarReporte_Click(sender As Object, e As EventArgs) Handles btnConfigurarReporte.Click
+        Dim input As String = InputBox("Ingrese el valor máximo de stock para el reporte:", "Configurar Reporte")
+
+        If Integer.TryParse(input, valorConfigurado) Then
+            MessageBox.Show("Valor configurado correctamente: " & valorConfigurado, "Configuración", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("Debe ingresar un número entero válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 End Class
