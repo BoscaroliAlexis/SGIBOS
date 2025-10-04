@@ -124,7 +124,7 @@ Partial Class Inventario
         Me.btnReporteStock.Name = "btnReporteStock"
         Me.btnReporteStock.Size = New System.Drawing.Size(73, 55)
         Me.btnReporteStock.TabIndex = 9
-        Me.btnReporteStock.Text = "Reporte de escasez"
+        Me.btnReporteStock.Text = "Listado de productos faltantes"
         Me.btnReporteStock.UseVisualStyleBackColor = True
         '
         'btnConfigurarReporte

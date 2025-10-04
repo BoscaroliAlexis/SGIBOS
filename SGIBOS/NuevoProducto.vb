@@ -58,15 +58,7 @@ Public Class NuevoProducto
         End If
     End Sub
 
-    ' Evento que se ejecuta cuando se despliega la lista de categorías para actualizarla dinámicamente
-    Private Sub cmbCategoria_DropDown(sender As Object, e As EventArgs) Handles cmbCategoria.DropDown
-        CargarComboCategoria()
-    End Sub
 
-    ' Evento que se ejecuta cuando se despliega la lista de proveedores para actualizarla dinámicamente
-    Private Sub cmbProveedor_DropDown(sender As Object, e As EventArgs) Handles cmbProveedor.DropDown
-        CargarComboProveedor()
-    End Sub
 
     ' Evento que se ejecuta al hacer clic en el botón para añadir o guardar el producto
     Private Sub btnAñadirPro_Click(sender As Object, e As EventArgs) Handles btnAñadirPro.Click

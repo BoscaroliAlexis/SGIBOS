@@ -2,6 +2,7 @@
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports System.IO
+Imports System.Runtime.CompilerServices
 
 
 Public Class Inventario
@@ -69,7 +70,7 @@ Public Class Inventario
 
             ' Consulta SQL que obtiene información del producto junto con su categoría y proveedor
             Dim consulta As String = "SELECT p.id_producto, p.nombre AS Producto, p.descripcion, p.precio, p.cantidad_stock, " &
-                                     "c.nombre AS Categoria, pr.nombre AS Proveedor, p.fecha_creacion " &
+                                     "c.nombre AS Categoria, c.id_categoria as IDCategoria, pr.nombre AS Proveedor, pr.id_proveedor AS IDProveedor, p.fecha_creacion " &
                                      "FROM productos p " &
                                      "LEFT JOIN categorias c ON p.id_categoria = c.id_categoria " &
                                      "LEFT JOIN proveedores pr ON p.id_proveedor = pr.id_proveedor"
@@ -145,9 +146,14 @@ Public Class Inventario
     Private Sub ActualizarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ActualizarToolStripMenuItem.Click
         ' Verifica que haya una fila seleccionada
         If dgvInventario.SelectedRows.Count > 0 Then
+
             ' Obtiene la fila seleccionada
             Dim fila As DataGridViewRow = dgvInventario.SelectedRows(0)
             Dim formulario As New NuevoProducto()
+
+            CargarComboCategoria(formulario.cmbCategoria)
+            CargarComboProveedor(formulario.cmbProveedor)
+
 
             ' Pasa los datos del producto al formulario para editar
             formulario.idProducto = fila.Cells("id_producto").Value
@@ -155,8 +161,8 @@ Public Class Inventario
             formulario.txtDescripcion.Text = fila.Cells("descripcion").Value.ToString()
             formulario.txtPrecio.Text = fila.Cells("precio").Value.ToString()
             formulario.txtCantidadStock.Text = fila.Cells("cantidad_stock").Value.ToString()
-            formulario.cmbCategoria.Text = fila.Cells("Categoria").Value.ToString()
-            formulario.cmbProveedor.Text = fila.Cells("Proveedor").Value.ToString()
+            formulario.cmbCategoria.SelectedValue = fila.Cells("IDCategoria").Value.ToString()
+            formulario.cmbProveedor.SelectedValue = fila.Cells("IDProveedor").Value.ToString()
             formulario.EsActualizar = True ' Marca el formulario en modo edición
 
             ' Muestra el formulario de edición y luego recarga los datos al cerrarlo
@@ -167,6 +173,35 @@ Public Class Inventario
         End If
     End Sub
 
+    Sub CargarComboCategoria(cmb As ComboBox)
+
+        LlenarComboBox("SELECT id_categoria, nombre FROM Categorias", cmb, "id_categoria", "nombre")
+        cmb.DropDownStyle = ComboBoxStyle.DropDownList ' No permite que el usuario escriba texto, solo seleccionar
+    End Sub
+
+    ' Carga los proveedores disponibles en el ComboBox de proveedores
+    Sub CargarComboProveedor(cmb As ComboBox)
+        LlenarComboBox("SELECT id_proveedor, nombre FROM Proveedores", cmb, "id_proveedor", "nombre")
+        cmb.DropDownStyle = ComboBoxStyle.DropDownList
+    End Sub
+
+    Sub LlenarComboBox(ByVal consulta As String, ByVal combo As ComboBox, ByVal idCampo As String, ByVal nombreCampo As String)
+        Try
+            Conectar() ' Abre la conexión a la base de datos
+            Dim comando As New MySqlCommand(consulta, conn) ' Crea el comando con la consulta SQL
+            Dim adaptador As New MySqlDataAdapter(comando) ' Adaptador para llenar un DataTable con los datos
+            Dim tabla As New DataTable() ' Tabla temporal para cargar datos
+
+            adaptador.Fill(tabla) ' Llena la tabla con los resultados de la consulta
+
+            ' Asigna la tabla como origen de datos del ComboBox
+            combo.DataSource = tabla
+            combo.DisplayMember = nombreCampo ' Campo que se mostrará en la lista
+            combo.ValueMember = idCampo       ' Campo que será el valor real seleccionado
+        Catch ex As Exception
+            MessageBox.Show("Error al llenar el ComboBox: " & ex.Message) ' Muestra error si falla
+        End Try
+    End Sub
     ' Opción del menú contextual para eliminar un producto
     Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
         ' Verifica que haya una fila seleccionada
