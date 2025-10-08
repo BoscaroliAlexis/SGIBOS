@@ -134,6 +134,7 @@ Public Class Proveedores
             formulario.txtTelefono.Text = telefono
             formulario.txtCorreo.Text = correo
             formulario.txtDireccion.Text = direccion
+            formulario.EsActualizar = True
 
             formulario.ShowDialog() ' Mostrar formulario como modal
             CargarDatos() ' Recargar datos tras posible actualización

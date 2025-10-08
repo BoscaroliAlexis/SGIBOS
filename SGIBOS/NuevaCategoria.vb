@@ -2,6 +2,7 @@
 
 Public Class NuevaCategoria
 
+    Public EsActualizar As Boolean = False
     ' Variable pública que indica si se está creando una nueva categoría (id=0) o editando una existente (id > 0)
     Public idCategoria As Integer = 0
 
@@ -51,6 +52,11 @@ Public Class NuevaCategoria
     Private Sub NuevaCategoria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Aplica el tema visual personalizado al formulario y sus controles
         ModuloVisual.AplicarTemaFormulario(Me)
+        If EsActualizar Then
+            Me.Text = "Actualizar categoria"
+        Else
+            Me.Text = "Nueva categoria"
+        End If
     End Sub
 
 End Class

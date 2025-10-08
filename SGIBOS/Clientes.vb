@@ -113,6 +113,7 @@ Public Class Clientes
             formulario.txtTelefono.Text = telefono
             formulario.txtCorreo.Text = correo
             formulario.txtDireccion.Text = direccion
+            formulario.EsActualizar = True
 
             formulario.ShowDialog()
             CargarDatos()

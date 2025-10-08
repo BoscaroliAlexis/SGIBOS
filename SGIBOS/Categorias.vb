@@ -91,6 +91,7 @@ Public Class Categorias
             Dim form As New NuevaCategoria()
             form.idCategoria = idCategoria
             form.txtNombreCat.Text = nombre
+            form.EsActualizar = True
             form.ShowDialog()
 
             ' Refresca los datos después de actualizar

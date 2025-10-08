@@ -2,7 +2,7 @@
 Imports System.Text.RegularExpressions ' Para validar formatos con expresiones regulares
 
 Public Class NuevoProveedor
-
+    Public EsActualizar As Boolean = False
     ' Variable que almacena el ID del proveedor: 0 si es nuevo, mayor a 0 si se edita uno existente
     Public idProveedor As Integer = 0
 
@@ -14,6 +14,12 @@ Public Class NuevoProveedor
         Me.StartPosition = FormStartPosition.Manual
         Me.Location = New Point((Screen.PrimaryScreen.WorkingArea.Width - Me.Width) \ 2,
                             (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) \ 2)
+
+        If EsActualizar Then
+            Me.Text = "Actualizar proveedor"
+        Else
+            Me.Text = "Nuevo proveedor"
+        End If
     End Sub
 
     ' Evento que se ejecuta al hacer clic en el botón para añadir o guardar el proveedor

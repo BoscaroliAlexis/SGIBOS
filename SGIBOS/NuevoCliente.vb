@@ -6,6 +6,7 @@ Public Class NuevoCliente
     ' Variable pública que indica si se está creando un cliente nuevo (0) o editando uno existente (>0)
     Public idCliente As Integer = 0
 
+    Public EsActualizar As Boolean = False
     ' Variable para el comando SQL (insert/update)
     Dim comando As MySqlCommand
 
@@ -107,6 +108,11 @@ Public Class NuevoCliente
         Me.StartPosition = FormStartPosition.Manual
         Me.Location = New Point((Screen.PrimaryScreen.WorkingArea.Width - Me.Width) \ 2,
                                 (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) \ 2)
+        If EsActualizar Then
+            Me.Text = "Actualizar cliente"
+        Else
+            Me.Text = "Nuevo cliente"
+        End If
     End Sub
 
     ' Evento que se ejecuta cuando se cierra el formulario

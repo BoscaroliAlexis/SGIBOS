@@ -51,6 +51,12 @@ Public Class NuevoProducto
         'cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList
         'cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList
 
+        If EsActualizar Then
+            Me.Text = "Actualizar producto"
+        Else
+            Me.Text = "Nuevo producto"
+        End If
+
         ' Si no se está actualizando un producto, carga los ComboBox con categorías y proveedores
         If Not EsActualizar Then
             CargarComboProveedor()
