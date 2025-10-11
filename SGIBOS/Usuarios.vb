@@ -69,18 +69,9 @@ Public Class Usuarios
             ' Rellenar la columna 'estado_texto' según el valor real de 'estado'
             For Each row As DataGridViewRow In dgvUsuarios.Rows
                 If row.IsNewRow Then Continue For
-                Dim val = If(dgvUsuarios.Columns.Contains("estado"), row.Cells("estado").Value, 0)
-                Dim estadoInt As Integer = 0
 
-                If val IsNot Nothing AndAlso Not Convert.IsDBNull(val) Then
-                    If TypeOf val Is Boolean Then
-                        estadoInt = If(CBool(val), 1, 0)
-                    Else
-                        estadoInt = Convert.ToInt32(val)
-                    End If
-                End If
-
-                row.Cells("estado_texto").Value = If(estadoInt = 1, "Habilitado", "Deshabilitado")
+                Dim estadoValor = Convert.ToInt32(If(row.Cells("estado").Value, 0))
+                row.Cells("estado_texto").Value = If(estadoValor = 1, "Habilitado", "Deshabilitado")
             Next
 
         Catch ex As Exception
